@@ -129,7 +129,7 @@ func main() {
 			})
 		})
 	})
-	m.Row(50, func() {
+	m.Row(120, func() {
 		m.Col(12, func() {
 			m.Text("Please before the start check out dependencies for firewall settings. If you do not have these dependencies, open the original documentation(github.com/firatkaya1) and install to your operation system.", props.Text{
 				Top:         20,
@@ -146,13 +146,50 @@ func main() {
 				Align:       consts.Left,
 			})
 			m.Text(dot+" sudo apt-get update && sudo apt-get install iptables ", props.Text{
+				Top:         50,
+				Size:        12,
+				Extrapolate: false,
+				Style:       consts.Italic,
+				Align:       consts.Left,
+			})
+			m.Text("Settings ", props.Text{
 				Top:         60,
+				Size:        18,
+				Extrapolate: false,
+				Style:       consts.Bold,
+				Align:       consts.Left,
+			})
+
+			m.Text("Extract Path ", props.Text{
+				Top:         70,
+				Size:        13,
+				Extrapolate: false,
+				Style:       consts.Bold,
+				Align:       consts.Left,
+			})
+			m.Text("/home/kaya/test.pdf ", props.Text{
+				Top:         78,
+				Size:        12,
+				Extrapolate: false,
+				Style:       consts.Italic,
+				Align:       consts.Left,
+			})
+			m.Text("Language ", props.Text{
+				Top:         90,
+				Size:        13,
+				Extrapolate: false,
+				Style:       consts.Bold,
+				Align:       consts.Left,
+			})
+			m.Text("English ", props.Text{
+				Top:         98,
 				Size:        12,
 				Extrapolate: false,
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
 		})
+
 	})
 
 	//Add the open ports
@@ -250,7 +287,7 @@ func main() {
 			})
 		})
 	})
-	m.Row(50, func() {
+	m.Row(80, func() {
 		m.Col(12, func() {
 			m.Text("Step 1", props.Text{
 				Size:        18,
@@ -286,12 +323,107 @@ func main() {
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
-			m.Text(dot+"sudo iptables -I OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP ", props.Text{
+			m.Text(dot+" sudo iptables -I OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP ", props.Text{
 				Top:         50,
 				Size:        12,
 				Extrapolate: false,
 				Style:       consts.Italic,
 				Align:       consts.Left,
+			})
+
+			m.Text("Step 3", props.Text{
+				Top:         60,
+				Size:        18,
+				Extrapolate: false,
+				Style:       consts.Bold,
+				Align:       consts.Left,
+			})
+			m.Text("Check the ports, are they closed from outside request?", props.Text{
+				Top:         70,
+				Size:        12,
+				Extrapolate: false,
+				Style:       consts.Italic,
+				Align:       consts.Left,
+			})
+			m.Text(dot+" sudo iptables -L -nv ", props.Text{
+				Top:         80,
+				Size:        12,
+				Extrapolate: false,
+				Style:       consts.Italic,
+				Align:       consts.Left,
+			})
+		})
+	})
+
+	m.AddPage()
+
+	m.Row(200, func() {
+		m.Col(12, func() {
+			m.Text("Frequently Asked Questions", props.Text{
+				Top:    5,
+				Size:   20,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Center,
+			})
+			m.Text("1-Why open ports has vulnerability?", props.Text{
+				Top:    20,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+				Top:    30,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+
+			m.Text("2-Why open ports has vulnerability?", props.Text{
+				Top:    45,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+				Top:    55,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+
+			m.Text("2-Why open ports has vulnerability?", props.Text{
+				Top:    70,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+				Top:    80,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+
+			m.Text("2-Why open ports has vulnerability?", props.Text{
+				Top:    95,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+				Top:    105,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
 			})
 		})
 	})
