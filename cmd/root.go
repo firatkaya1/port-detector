@@ -31,16 +31,9 @@ var rootCmd = &cobra.Command{
 	Use:     "port-detector",
 	Version: "0.1.1",
 	Short:   "Best port detector CLI",
-	Long: `port-detector an command based interface which is help you to find opened ports and 
-report them easily.
+	Long: `port-detector an command based interface which is help you to find opened ports and report them easily.
 Start to using, just enter the detect command and watch the magic. Enjoy...`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	//	Run: func(cmd *cobra.Command, args []string) { },
 }
-
-// Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the rootCmd.
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
