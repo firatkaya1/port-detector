@@ -355,9 +355,9 @@ func main() {
 		})
 	})
 
+	//Frequently Asked Questions
 	m.AddPage()
-
-	m.Row(200, func() {
+	m.Row(300, func() {
 		m.Col(12, func() {
 			m.Text("Frequently Asked Questions", props.Text{
 				Top:    5,
@@ -366,14 +366,15 @@ func main() {
 				Style:  consts.Bold,
 				Align:  consts.Center,
 			})
-			m.Text("1-Why open ports has vulnerability?", props.Text{
+			m.Text("1-Why I should close open ports?", props.Text{
 				Top:    20,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+			m.Text("Open ports can accept outside request to your machine and represent vulnerability of your "+
+				"information. We are recommended to close outside request for protect itself.", props.Text{
 				Top:    30,
 				Size:   12,
 				Family: consts.Arial,
@@ -381,14 +382,16 @@ func main() {
 				Align:  consts.Left,
 			})
 
-			m.Text("2-Why open ports has vulnerability?", props.Text{
+			m.Text("2-Why should some ports be open?", props.Text{
 				Top:    45,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+			m.Text("Even we want to control all the ports, we have to continue our communication between machine "+
+				"and world. For example, we do not want to close 80 port because this port working with HTTP and connect to"+
+				"other machine.Another example is 22 port. This port helps to us connect our machine via SSH. ", props.Text{
 				Top:    55,
 				Size:   12,
 				Family: consts.Arial,
@@ -396,14 +399,14 @@ func main() {
 				Align:  consts.Left,
 			})
 
-			m.Text("2-Why open ports has vulnerability?", props.Text{
+			m.Text("3-What happen if i close all ports?", props.Text{
 				Top:    70,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+			m.Text("Definitely worst idea. You can not contact your machine if machine is a server. All communication will lose.", props.Text{
 				Top:    80,
 				Size:   12,
 				Family: consts.Arial,
@@ -411,21 +414,201 @@ func main() {
 				Align:  consts.Left,
 			})
 
-			m.Text("2-Why open ports has vulnerability?", props.Text{
+			m.Text("4-How can i close all ports only one command ? ", props.Text{
 				Top:    95,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("We believe that open ports can be under attack from outside attack to hack your server or personal computer.", props.Text{
+			m.Text("iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 80,443 -j DROP   ", props.Text{
 				Top:    105,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.BoldItalic,
+				Align:  consts.Left,
+			})
+			m.Text("5-How can i open a port that i closed? ", props.Text{
+				Top:    120,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("Let's we assume, we closed 22 port after that we wants to open same port again.", props.Text{
+				Top:    130,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+			m.Text("iptables -I INPUT -p tcp --dport 22 --syn -j ACCEPT ", props.Text{
+				Top:    140,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+			m.Text("6-What is iptables command ? ", props.Text{
+				Top:    155,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("Iptables is a Linux command line firewall that allows system administrators to manage incoming "+
+				"and outgoing traffic via a set of configurable table rules. Iptables uses a set of tables which have "+
+				"chains that contain set of built-in or user defined rules", props.Text{
+				Top:    165,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+			m.Text("6-What is extract path in this document? ", props.Text{
+				Top:    180,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("Extract path is represent your document where will save. ", props.Text{
+				Top:    190,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+			m.Text("7-What is the language? ", props.Text{
+				Top:    200,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("Language is represent main language of this document. You can change before create this document. ", props.Text{
+				Top:    210,
+				Size:   12,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+
+			m.Text("8-What is the language? ", props.Text{
+				Top:    220,
+				Size:   15,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("Language is represent main language of this document. You can change before create this document. ", props.Text{
+				Top:    230,
 				Size:   12,
 				Family: consts.Arial,
 				Style:  consts.Normal,
 				Align:  consts.Left,
 			})
 		})
+	})
+
+	m.AddPage()
+	commandHeaders := []string{"Command", "Explain"}
+	commandContents := [][]string{
+		{"-I", "Append this rule to a rule chain. Valid chains for what we're doing are INPUT, FORWARD and OUTPUT, but " +
+			"we mostly deal with INPUT in this tutorial, which affects only incoming traffic. "},
+		{"OUTPUT", "Represent incoming traffic."},
+		{"-p", "The connection protocol used."},
+		{"tcp", "Represent Transmission Control Protocol"},
+		{"--dport", "The destination port(s) required for this rule. A single port may be given, or a range may be given as start:end, which will match all ports from start to end, inclusive."},
+		{"{YOUR-PORT-NUMBER} ", " Which port do you want to block ?"},
+		{"-j", "Jump to the specified target. By default, iptables allows four targets:ACCEPT,REJECT,DROP,LOG"},
+		{"ACCEPT", "Accept the packet and stop processing rules in this chain."},
+		{"REJECT", "Reject the packet and notify the sender that we did so, and stop processing rules in this chain."},
+		{"DROP", " Silently ignore the packet, and stop processing rules in this chain."},
+		{"LOG", "Log the packet, and continue processing more rules in this chain. Allows the use of the --log-prefix and --log-level options."},
+	}
+	m.Row(10, func() {
+		m.Col(12, func() {
+			m.Text("9-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ", props.Text{
+				Size:   13,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+		})
+	})
+	m.TableList(commandHeaders, commandContents, props.TableList{
+		HeaderProp: props.TableListContent{
+			Family:    consts.Arial,
+			Style:     consts.Bold,
+			Size:      16.0,
+			GridSizes: []uint{3, 9},
+		},
+		ContentProp: props.TableListContent{
+			Family:    consts.Courier,
+			Style:     consts.Normal,
+			Size:      13.0,
+			GridSizes: []uint{3, 9},
+		},
+		Align: consts.Left,
+		AlternatedBackground: &color.Color{
+			Red:   235,
+			Green: 255,
+			Blue:  255,
+		},
+		HeaderContentSpace: 5.0,
+		Line:               true,
+	})
+	m.AddPage()
+	m.Row(20, func() {
+		m.Col(12, func() {
+			m.Text("Most Common Ports and Services", props.Text{
+				Align: consts.Center,
+				Style: consts.Bold,
+				Size:  20,
+			})
+		})
+	})
+	portHeaders := []string{"Port", "Service", "Explain"}
+	portContents := [][]string{
+		{"20,21", "FTP", "File Transfer Protocol"},
+		{"22", "SSH", "Secure Shell (SSH)"},
+		{"23", "TELNET", "Unencrypted text communication"},
+		{"25", "SMTP", "Simple Mail Transfer Protocol"},
+		{"53", "DNS", "Domain Name System"},
+		{"80", "HTTP", "Hyper Text Transfer Protocol"},
+		{"110", "POP3", "Post Office Protocol"},
+		{"119", "NNTP", "Network News Transfer Protocol"},
+		{"123", "NTP", "Network Time Protocol"},
+		{"143", "IMAP", "Internet Message Access Protocol"},
+		{"443", "HTTPS", "Hyper Text Transfer Protocol Security"},
+		{"465", "SMTPS", "Simple Mail Transfer Protocol Over SSL"},
+		{"3306", "mysql", "MySQL Database Service"},
+		{"5432", "postgres", "PostgreSQL Database"},
+		{"8080", "Tomcat", "Apache Tomcat Server"},
+		{"80", "HTTP", ""},
+	}
+	m.TableList(portHeaders, portContents, props.TableList{
+		HeaderProp: props.TableListContent{
+			Family:    consts.Arial,
+			Style:     consts.Bold,
+			Size:      16.0,
+			GridSizes: []uint{2, 2, 8},
+		},
+		ContentProp: props.TableListContent{
+			Family:    consts.Courier,
+			Style:     consts.Normal,
+			Size:      12.0,
+			GridSizes: []uint{2, 2, 8},
+		},
+		Align: consts.Left,
+		AlternatedBackground: &color.Color{
+			Red:   255,
+			Green: 230,
+			Blue:  255,
+		},
+		HeaderContentSpace: 5.0,
+		Line:               true,
 	})
 
 	err := m.OutputFileAndClose("/home/kaya/Music/test.pdf")
