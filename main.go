@@ -559,6 +559,53 @@ func main() {
 		HeaderContentSpace: 5.0,
 		Line:               true,
 	})
+	iptableHeaders := []string{"Command", "Explain"}
+	iptableContent := [][]string{
+		{"-L", "List of current rules in iptables."},
+		{"-nv", "Filter only invalid rules."},
+	}
+	m.Row(30, func() {
+		m.Col(12, func() {
+			m.Text("9-What is ' sudo iptables -L -nv' ? ", props.Text{
+				Top:    5,
+				Size:   13,
+				Family: consts.Arial,
+				Style:  consts.Bold,
+				Align:  consts.Left,
+			})
+			m.Text("This command list of all rules in iptables.", props.Text{
+				Top:    15,
+				Size:   13,
+				Family: consts.Arial,
+				Style:  consts.Normal,
+				Align:  consts.Left,
+			})
+		})
+	})
+	m.TableList(iptableHeaders, iptableContent, props.TableList{
+		HeaderProp: props.TableListContent{
+			Family:    consts.Arial,
+			Style:     consts.Bold,
+			Size:      16.0,
+			GridSizes: []uint{3, 9},
+		},
+		ContentProp: props.TableListContent{
+			Family:    consts.Courier,
+			Style:     consts.Normal,
+			Size:      13.0,
+			GridSizes: []uint{3, 9},
+		},
+		Align: consts.Left,
+		AlternatedBackground: &color.Color{
+			Red:   235,
+			Green: 255,
+			Blue:  255,
+		},
+		HeaderContentSpace: 5.0,
+		Line:               true,
+	})
+
+	//Port and Explain
 	m.AddPage()
 	m.Row(20, func() {
 		m.Col(12, func() {
@@ -586,7 +633,6 @@ func main() {
 		{"3306", "mysql", "MySQL Database Service"},
 		{"5432", "postgres", "PostgreSQL Database"},
 		{"8080", "Tomcat", "Apache Tomcat Server"},
-		{"80", "HTTP", ""},
 	}
 	m.TableList(portHeaders, portContents, props.TableList{
 		HeaderProp: props.TableListContent{
