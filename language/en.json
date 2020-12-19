@@ -1,0 +1,88 @@
+{
+  "p1_motto": "Detect ports easily",
+  "p1_creator": "Created By Fırat Kaya",
+
+  "p2_source_codes": "Source Codes",
+
+  "p3_version": "Version",
+  "p3_os_info": "We are detect to your operation system is Ubuntu 19.10. Under the these page all suggestions re-write for you personal computer. Feel free.",
+  "p3_os_sub_info:":"Please before the start check out dependencies for firewall settings. If you do not have these dependencies, open the original documentation(github.com/firatkaya1) and install to your operation system.",
+  "p3_deb_info": "We are using iptables command on ubuntu.",
+  "p3_settings": "Settings",
+  "p3_path": "Extract Path ",
+  "p3_lang": "Language",
+  "p3_created_date": "Created Date ",
+
+  "p4_status": "Status",
+  "p4_port_detect": "We are detecting 11 ports and 3 port came from unknown, if you are considering these ports not expected, please forbid these ports. ",
+  "p4_question_1": "Why should you close unused ports?",
+  "p4_answer_1": "Open ports on a server are a security vulnerability that can potentially allow a hacker to exploit services on your network. If those services are unpatched, a hacker can easily take advantage of the system by\nrunning a simple port scan using free software like nmap to discover the open ports. It’s important that\nyou understand some basics about port security and how to manage ports with the principal of least privilege. ",
+
+  "p4_question_2": "How to block a port?",
+  "p4_answer_2": "In linux worlds, we recommend to you use commands which is help you to understand and managed your firewall. ",
+
+  "p4_step_1": "Step 1",
+  "p4_step_1_info": "Install iptables library to your machine.",
+
+  "p4_step_2": "Step 2",
+  "p4_step_2_info": "Block the incoming request which is protect to you from unknown resources.",
+
+  "p4_step_3": "Step 3",
+  "p4_step_3_info": "Check the ports, are they closed from outside request?",
+
+
+  "p5_title": "Frequently Asked Questions",
+  "p5_question_1": "1-Why I should close open ports?",
+  "p5_question_1": "Open ports can accept outside request to your machine and represent vulnerability of your information. We are recommended to close outside request for protect itself. ",
+
+
+  "p5_question_2": "2-Why should some ports be open?",
+  "p5_answer_2": "Even we want to control all the ports, we have to continue our communication between machine and world. For example, we do not want to close 80 port because this port working with HTTP and connect\ntoother machine.Another example is 22 port. This port helps to us connect our machine via SSH. ",
+
+  "p5_question_3": "3-What happen if i close all ports?",
+  "p5_answer_3": "Definitely worst idea. You can not contact your machine if machine is a server. All communication will lose. ",
+
+  "p5_question_4": "4-How can i close all ports only one command ? ",
+  "p5_answer_4": "iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 80,443 -j DROP",
+
+  "p5_question_5": "5-How can i open a port that i closed?",
+  "p5_answer_5": "Let's we assume, we closed 22 port after that we wants to open same port again.",
+
+  "p5_question_6": "6-What is iptables command ? ",
+  "p5_answer_6": "Iptables is a Linux command line firewall that allows system administrators to manage incoming and outgoing traffic via a set of configurable table rules. Iptables uses a set of tables which have chains that contain set of built-in or user defined rules ",
+
+  "p5_question_7": "7-What is extract path in this document? ",
+  "p5_answer_7": "Extract path is represent your document where will save. ",
+
+  "p5_question_8": "8-What is the language? ",
+  "p5_answer_8": "Dil, raporun orjinal dilini temsil etmektedir.",
+
+  "p5_question_9": "9-Dil ayarı nedir ?",
+  "p5_answer_9": "Dil, raporun orjinal dilini temsil etmektedir.",
+
+  "p5_question_10": "'sudo iptables -A OUTPUT -p tcp --dport {PORT-NUMARAN} -j DROP' komut nedir ?",
+  "p5_answer_10_command": "Komut",
+  "p5_answer_10_explain": "Açıklama",
+
+  "p5_answer_10_1": "Bu flag, kural zincirine yeni bir kural eklenmesini sağlar. INPUT,FORWARD ve OUTPUT değerlerini kabul eder. Burada gelen trafiği engellediğimiz için INPUT değerini kullanacağız.",
+  "p5_answer_10_2": "Gelen trafiği temsil edir.",
+  "p5_answer_10_3": "Hangi bağlantı protokolünü kullandığını temsil eder.",
+  "p5_answer_10_4": "Transmission Control Protokolünü(TCP) temsil eder.",
+  "p5_answer_10_5": "Hedef bağlantı için gereklidir. Tekil bir port ya da belli aralıktaki portları belirtmek için kullanılır. ",
+  "p5_answer_10_6": "Engellemek istediğiniz portu belirtir.",
+  "p5_answer_10_7": "Spesifik bir hedefi belirtmek için kullanılır. 4 hedeften biri kullanılabilir : ACCEPT,REJECT,DROP,LOG",
+  "p5_answer_10_8": "Gelen isteği kabul eder ve işleme alır. ",
+  "p5_answer_10_9": "Gelen isteği red eder ve bunu bildirmez. İşlemi sonlandırır. ",
+  "p5_answer_10_10": "Gelen isteği görmezden gelir ve bunu bildirir. İşlemi sonlandırır. ",
+  "p5_answer_10_11": "Gelen isteğin log kaydını oluşturur. İşleme devam eder. ",
+
+  "p5_question_11": "'sudo iptables -L nv' komutu nedir?",
+  "p5_answer_11": "İptables'da mevcut tüm komutların listelenmesini sağlar.",
+
+  "p5_answer_11_1": "Mevcut tablodaki tüm kuralları getirir.",
+  "p5_answer_11_2": "Sadece invalid olanları getirir.",
+
+  "p6_title": "Sık Kullanılan Port Servisleri",
+  "p6_answer_112": ""
+
+}

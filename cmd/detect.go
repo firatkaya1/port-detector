@@ -1,26 +1,13 @@
-/*
-Copyright © 2020 NAME HERE <EMAIL ADDRESS>
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/johnfercher/maroto/pkg/color"
 	"github.com/johnfercher/maroto/pkg/consts"
 	"github.com/johnfercher/maroto/pkg/pdf"
 	"github.com/johnfercher/maroto/pkg/props"
+	"io/ioutil"
 	"net"
 	"os"
 	"strconv"
@@ -53,14 +40,19 @@ func scanPorts() {
 		}
 		if conn != nil {
 			defer conn.Close()
-			fmt.Println("Found ", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)))
+			fmt.Println("Open Port Detect ", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)))
 		}
 	}
+	createPDF()
 }
 
 const dot = "\xE2\x80\xA2"
 
+var langMap = make(map[string]string)
+
 func createPDF() {
+	langMap = jsonConsume(langMap)
+
 	begin := time.Now()
 	m := pdf.NewMaroto(consts.Portrait, consts.Letter)
 	m.SetBorder(false)
@@ -84,7 +76,7 @@ func createPDF() {
 	})
 	m.Row(30, func() {
 		m.Col(12, func() {
-			m.Text("\"Find Listening ports easily\"", props.Text{
+			m.Text(langMap["p1_motto"], props.Text{
 				Top:   30,
 				Size:  18,
 				Style: consts.Italic,
@@ -94,7 +86,7 @@ func createPDF() {
 	})
 	m.Row(30, func() {
 		m.Col(12, func() {
-			m.Text("Created By Firat Kaya", props.Text{
+			m.Text(langMap["p1_creator"], props.Text{
 				Top:   30,
 				Size:  13,
 				Style: consts.Italic,
@@ -118,7 +110,7 @@ func createPDF() {
 				Style: consts.Bold,
 				Align: consts.Center,
 			})
-			m.Text("Source Codes", props.Text{
+			m.Text(langMap["p2_source_codes"], props.Text{
 				Top:   140,
 				Size:  10,
 				Style: consts.Italic,
@@ -166,7 +158,7 @@ func createPDF() {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text("We are detect to your operation system is Ubuntu 19.10. Under the these page all suggestions re-write for you personal computer. Feel free", props.Text{
+			m.Text(fmt.Sprintf(langMap["p3_os_info"], "{os adı}"), props.Text{
 				Top:         10,
 				Size:        12,
 				Extrapolate: false,
@@ -177,14 +169,14 @@ func createPDF() {
 	})
 	m.Row(120, func() {
 		m.Col(12, func() {
-			m.Text("Please before the start check out dependencies for firewall settings. If you do not have these dependencies, open the original documentation(github.com/firatkaya1) and install to your operation system.", props.Text{
+			m.Text(fmt.Sprintf(langMap["p3_os_sub_info"]), props.Text{
 				Top:         20,
 				Size:        12,
 				Extrapolate: false,
 				Style:       consts.Normal,
 				Align:       consts.Left,
 			})
-			m.Text(dot+" We are using iptables command on ubuntu. ", props.Text{
+			m.Text(dot+langMap["p3_deb_info"], props.Text{
 				Top:         40,
 				Size:        12,
 				Extrapolate: false,
@@ -198,7 +190,7 @@ func createPDF() {
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
-			m.Text("Settings ", props.Text{
+			m.Text(langMap["p3_settings"], props.Text{
 				Top:         60,
 				Size:        18,
 				Extrapolate: false,
@@ -206,7 +198,7 @@ func createPDF() {
 				Align:       consts.Left,
 			})
 
-			m.Text("Extract Path ", props.Text{
+			m.Text(langMap["p3_path"], props.Text{
 				Top:         70,
 				Size:        13,
 				Extrapolate: false,
@@ -220,7 +212,7 @@ func createPDF() {
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
-			m.Text("Language ", props.Text{
+			m.Text(langMap["p3_lang"], props.Text{
 				Top:         90,
 				Size:        13,
 				Extrapolate: false,
@@ -722,4 +714,14 @@ func createPDF() {
 
 	end := time.Now()
 	fmt.Println(end.Sub(begin))
+}
+
+func jsonConsume(mm map[string]string) map[string]string {
+	var result map[string]interface{}
+	file, _ := ioutil.ReadFile("language/tr.json")
+	json.Unmarshal([]byte(file), &result)
+	for k, v := range result {
+		mm[k] = fmt.Sprint(v)
+	}
+	return mm
 }

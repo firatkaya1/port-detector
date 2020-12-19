@@ -1,0 +1,90 @@
+{
+  "p1_motto": "Portlarinizi kolayca tarayin",
+  "p1_creator": "Fırat Kaya tarafından oluşturuldu.",
+
+  "p2_source_codes": "Kaynak Kodlar",
+
+  "p3_version": "Versiyon",
+  "p3_os_info": "Isletim sisteminizin %s olduğunu keşfettik. Bu sayfadan sonraki ayarlamalar kişisel bilgisayarınız özelliklerini göz önüne alınarak ayarlanmıştır.",
+  "p3_os_sub_info:":"Başlamadan önce, lütfen projenin daha düzgün çalışabilmesi için bağımlılıkları kontrol ediniz. Eğer bu bağımlılıklara sahip değilseniz orjinal döküman adresinden(github.com/firatkaya1) okuyabilir ve bağımlılıkları nasıl indirebileceğinizi görebilirsiniz. ",
+  "p3_deb_info": "Ubuntu işletim sisteminde iptables komutu kullanılmaktadır. Bağımlılığı kontrol edin.",
+  "p3_settings": "Ayarlar",
+  "p3_path": "Dosyanın Çıkarıldığı Adres",
+  "p3_lang": "Dil",
+  "p3_created_date": "Oluşturulma Tarihi",
+
+  "p4_status": "Durum",
+  "p4_port_detect": "Toplam %s port keşfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düşünüyorsanız, lütfen dışarıdan gelen istekleri bu portlar için kapatnızı.",
+  "p4_question_1": "Neden kullanılmayan portları kapatmalıyım ?",
+  "p4_answer_1": "Açık portlar, tehlikeli bilgisayar korsanlarına karşı güvenlik zaafiyeti oluşturmaktadır. Sizleri açık bir şekilde savunmasız bırakmaktadır. Eğer ki bu portlar güvenli hale getirilmez ise basit bir şekilde işletim sisteminiz hakkında bilgi toplayabilir ve nmap gibi 3.sınıf bir tool ile servislerinize zarar verebilir. Port güvenliğini anlamak ve uygulamak sizler için önemli bir ihtiyaçtır. ",
+
+  "p4_question_2": "Bir port'u nasıl engellerim ?",
+  "p4_answer_2": "Linux(%d) dünyasında sizlere bazı komutlar önermekte ve bunları nasıl kullanabileceğinizi göstereceğiz.",
+
+  "p4_step_1": "Adım 1",
+  "p4_step_1_info": "iptables kütüphanesini bilgisayarınıza indirin.",
+
+  "p4_step_2": "Adım 2",
+  "p4_step_2_info": "Bilinmeyen kaynaklardan gelen istekleri reddedin.",
+
+  "p4_step_3": "Adım 3",
+  "p4_step_3_info": "Portların düzgün bir şekilde kapatılıp kapatılmadığını kontrol edin.",
+
+
+  "p5_title": "Sıkça Sorulan Sorular",
+  "p5_question_1": "1-Neden açık portları kapatmalıyım ?",
+  "p5_question_1": "Açık portlar dışarıdan gelen istekleri kabul etmekte ve bir güvenlik açığı oluşturmaktadırlar.  Kişisel güvenliğiniz için açık portların kapatılmasını şiddetle tavsiye etmekteyiz.",
+
+
+  "p5_question_2": "2-Neden bazı portların açık kalması gerekmektedir ?",
+  "p5_answer_2": "Tüm portları kontrol etmek istesek bile, dış dünya ile iletişim kurabilmemiz adına bazı portların açık kalması gerekmektedir. Örnek olarak, 80 portu HTTP isteklerinin gerçekleştiği bir porttur. 22. port'u ise uzak bağlantı için kullanırız.  Bu portların kapatılması tavsiye edilmez.",
+
+  "p5_question_3": "3-Tüm portları kapatırsam ne olur ?",
+  "p5_answer_3": "3-Kesinlike kötü bir fikir. Eğer tüm portları kapattığınız yer bir sunucu ise var olan tüm bağlantılarınız kopacaktır. Tüm iletişim yollarınız kesilir.",
+
+  "p5_question_4": "4-Tüm portları nasıl kapatabilirim ?",
+  "p5_answer_4": "iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 80,443 -j DROP",
+
+  "p5_question_5": "5-Kapalı bir portu nasıl açabilirim ?",
+  "p5_answer_5": "22.portu kapattığınızı ve tekrardan açmak istediğinizi farz edelim.",
+
+  "p5_question_6": "6-iptables komutu nedir?",
+  "p5_answer_6": "Iptables, linux tabanlı bir güvenli duvarı ayarlama komutudur. Sistem yönetimi ve gelen-giden isteklerin yönetilmesini kolaylaştırır. Iptables bir konfigürasyon zincirinden oluşur ve kullanıcının tanımlamalarından meydana gelir.",
+
+  "p5_question_7": "7-Dosya yol uzantısı nedir?",
+  "p5_answer_7": "Dosya yol'u sizin, raporu nereye kayıt etmek istediğinizi belirleyen yoldur.",
+
+  "p5_question_8": "8-Dil ayarı nedir ?",
+  "p5_answer_8": "Dil, raporun orjinal dilini temsil etmektedir.",
+
+  "p5_question_9": "9-Dil ayarı nedir ?",
+  "p5_answer_9": "Dil, raporun orjinal dilini temsil etmektedir.",
+
+  "p5_question_10": "'sudo iptables -A OUTPUT -p tcp --dport {PORT-NUMARAN} -j DROP' komut nedir ?",
+  "p5_answer_10_command": "Komut",
+  "p5_answer_10_explain": "Açıklama",
+
+  "p5_answer_10_1": "Bu flag, kural zincirine yeni bir kural eklenmesini sağlar. INPUT,FORWARD ve OUTPUT değerlerini kabul eder. Burada gelen trafiği engellediğimiz için INPUT değerini kullanacağız.",
+  "p5_answer_10_2": "Gelen trafiği temsil edir.",
+  "p5_answer_10_3": "Hangi bağlantı protokolünü kullandığını temsil eder.",
+  "p5_answer_10_4": "Transmission Control Protokolünü(TCP) temsil eder.",
+  "p5_answer_10_5": "Hedef bağlantı için gereklidir. Tekil bir port ya da belli aralıktaki portları belirtmek için kullanılır. ",
+  "p5_answer_10_6": "Engellemek istediğiniz portu belirtir.",
+  "p5_answer_10_7": "Spesifik bir hedefi belirtmek için kullanılır. 4 hedeften biri kullanılabilir : ACCEPT,REJECT,DROP,LOG",
+  "p5_answer_10_8": "Gelen isteği kabul eder ve işleme alır. ",
+  "p5_answer_10_9": "Gelen isteği red eder ve bunu bildirmez. İşlemi sonlandırır. ",
+  "p5_answer_10_10": "Gelen isteği görmezden gelir ve bunu bildirir. İşlemi sonlandırır. ",
+  "p5_answer_10_11": "Gelen isteğin log kaydını oluşturur. İşleme devam eder. ",
+
+  "p5_question_11": "'sudo iptables -L nv' komutu nedir?",
+  "p5_answer_11": "İptables'da mevcut tüm komutların listelenmesini sağlar.",
+
+  "p5_answer_11_1": "Mevcut tablodaki tüm kuralları getirir.",
+  "p5_answer_11_2": "Sadece invalid olanları getirir.",
+
+  "p6_title": "Sık Kullanılan Port Servisleri",
+  "p6_answer_1": "",
+
+  "p5_question_1": "",
+  "p5_answer_1": ""
+}
