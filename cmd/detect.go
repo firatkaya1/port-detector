@@ -27,12 +27,24 @@ report them easily. Start to using, just enter the detect command and watch the 
 		scanPorts()
 	},
 }
+var language string
+var path string
 
 func init() {
 	rootCmd.AddCommand(detectCmd)
+	detectCmd.PersistentFlags().StringVarP(&language, "lang", "l", "en", "required")
+	detectCmd.PersistentFlags().StringVarP(&path, "path", "p", "/", "required")
+	detectCmd.PersistentFlags().StringVarP(&path, "name", "n", "/", "required")
+
+	detectCmd.MarkFlagRequired("lang")
+	detectCmd.MarkFlagRequired("path")
+	detectCmd.MarkFlagRequired("name")
+
 }
 
 func scanPorts() {
+	fmt.Println("lang :", language)
+	fmt.Println("path :", path)
 	for i := 0; i < 65532; i++ {
 		timeout := time.Second
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)), timeout)
@@ -94,7 +106,6 @@ func createPDF() {
 			})
 		})
 	})
-	//License Page
 	m.AddPage()
 	m.Row(200, func() {
 		m.Col(12, func() {
@@ -124,7 +135,6 @@ func createPDF() {
 			})
 		})
 	})
-	//Operation System will be here
 	m.AddPage()
 	m.Row(50, func() {
 		m.Col(12, func() {
@@ -169,7 +179,7 @@ func createPDF() {
 	})
 	m.Row(120, func() {
 		m.Col(12, func() {
-			m.Text(fmt.Sprintf(langMap["p3_os_sub_info"]), props.Text{
+			m.Text(langMap["p3_os_sub_info"], props.Text{
 				Top:         20,
 				Size:        12,
 				Extrapolate: false,
@@ -219,14 +229,14 @@ func createPDF() {
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("English ", props.Text{
+			m.Text("English", props.Text{
 				Top:         98,
 				Size:        12,
 				Extrapolate: false,
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
-			m.Text("Created Date ", props.Text{
+			m.Text(langMap["p3_created_date"], props.Text{
 				Top:         108,
 				Size:        13,
 				Extrapolate: false,
@@ -245,7 +255,7 @@ func createPDF() {
 	})
 	//Add the open ports
 	m.AddPage()
-	headers := []string{"#", "Host", "Port", "Status", "?"}
+	headers := []string{"#", "Host", "Port", langMap["p4_status"], "?"}
 	contents := [][]string{
 		{"1", "0.0.0.0", "3306", "Listening", "MYSQL"},
 		{"2", "0.0.0.0", "8080", "Listening", "Apache Tomcat"},
@@ -279,7 +289,7 @@ func createPDF() {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text("We are detecting 11 ports and 3 port came from unknown, if you are considering these ports not expected, please forbid these ports.", props.Text{
+			m.Text(fmt.Sprintf(langMap["p4_status"], 11, 3), props.Text{
 				Top:         5,
 				Size:        12,
 				Extrapolate: false,
@@ -290,7 +300,7 @@ func createPDF() {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text("Why should you close unused ports?", props.Text{
+			m.Text(langMap["p4_question_1"], props.Text{
 				Top:         20,
 				Size:        15,
 				Extrapolate: false,
@@ -301,11 +311,7 @@ func createPDF() {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text("Open ports on a server are a security vulnerability that can "+
-				"potentially allow a hacker to exploit services on your network. If those services "+
-				"are unpatched, a hacker can easily take advantage of the system by running a simple "+
-				"port scan using free software like nmap to discover the open ports. It’s important that you "+
-				"understand some basics about port security and how to manage ports with the principal of least privilege.", props.Text{
+			m.Text(langMap["p4_answer_1"], props.Text{
 				Top:         15,
 				Size:        12,
 				Family:      consts.Arial,
@@ -317,7 +323,7 @@ func createPDF() {
 	})
 	m.Row(30, func() {
 		m.Col(12, func() {
-			m.Text("How to block  a port?", props.Text{
+			m.Text(langMap["p4_question_2"], props.Text{
 				Top:         40,
 				Size:        15,
 				Extrapolate: false,
@@ -328,7 +334,7 @@ func createPDF() {
 	})
 	m.Row(20, func() {
 		m.Col(12, func() {
-			m.Text("In linux worlds, we recommend to you use commands which is help you to understand and managed your firewall. ", props.Text{
+			m.Text(langMap["p4_answer_2"], props.Text{
 				Top:         10,
 				Size:        12,
 				Family:      consts.Arial,
@@ -340,13 +346,13 @@ func createPDF() {
 	})
 	m.Row(80, func() {
 		m.Col(12, func() {
-			m.Text("Step 1", props.Text{
+			m.Text(langMap["p4_step_1"], props.Text{
 				Size:        18,
 				Extrapolate: false,
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("Install iptables library to your machine. ", props.Text{
+			m.Text(langMap["p4_step_1_info"], props.Text{
 				Top:         10,
 				Size:        12,
 				Extrapolate: false,
@@ -360,14 +366,14 @@ func createPDF() {
 				Style:       consts.Italic,
 				Align:       consts.Left,
 			})
-			m.Text("Step 2", props.Text{
+			m.Text(langMap["p4_step_2"], props.Text{
 				Top:         30,
 				Size:        18,
 				Extrapolate: false,
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("Block the incoming request which is protect to you from unknown resources.", props.Text{
+			m.Text(langMap["p4_step_2_info"], props.Text{
 				Top:         40,
 				Size:        12,
 				Extrapolate: false,
@@ -382,14 +388,14 @@ func createPDF() {
 				Align:       consts.Left,
 			})
 
-			m.Text("Step 3", props.Text{
+			m.Text(langMap["p4_step_3"], props.Text{
 				Top:         60,
 				Size:        18,
 				Extrapolate: false,
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("Check the ports, are they closed from outside request?", props.Text{
+			m.Text(langMap["p4_step_3_info"], props.Text{
 				Top:         70,
 				Size:        12,
 				Extrapolate: false,
@@ -409,22 +415,21 @@ func createPDF() {
 	m.AddPage()
 	m.Row(300, func() {
 		m.Col(12, func() {
-			m.Text("Frequently Asked Questions", props.Text{
+			m.Text(langMap["p5_title"], props.Text{
 				Top:    5,
 				Size:   20,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Center,
 			})
-			m.Text("1-Why I should close open ports?", props.Text{
+			m.Text(langMap["p5_question_1"], props.Text{
 				Top:    20,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Open ports can accept outside request to your machine and represent vulnerability of your "+
-				"information. We are recommended to close outside request for protect itself.", props.Text{
+			m.Text(langMap["p5_answer_1"], props.Text{
 				Top:    30,
 				Size:   12,
 				Family: consts.Arial,
@@ -432,16 +437,14 @@ func createPDF() {
 				Align:  consts.Left,
 			})
 
-			m.Text("2-Why should some ports be open?", props.Text{
+			m.Text(langMap["p5_question_2"], props.Text{
 				Top:    45,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Even we want to control all the ports, we have to continue our communication between machine "+
-				"and world. For example, we do not want to close 80 port because this port working with HTTP and connect to"+
-				"other machine.Another example is 22 port. This port helps to us connect our machine via SSH. ", props.Text{
+			m.Text(langMap["p5_answer_2"], props.Text{
 				Top:    55,
 				Size:   12,
 				Family: consts.Arial,
@@ -449,14 +452,14 @@ func createPDF() {
 				Align:  consts.Left,
 			})
 
-			m.Text("3-What happen if i close all ports?", props.Text{
+			m.Text(langMap["p5_question_3"], props.Text{
 				Top:    70,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Definitely worst idea. You can not contact your machine if machine is a server. All communication will lose.", props.Text{
+			m.Text(langMap["p5_answer_3"], props.Text{
 				Top:    80,
 				Size:   12,
 				Family: consts.Arial,
@@ -464,7 +467,7 @@ func createPDF() {
 				Align:  consts.Left,
 			})
 
-			m.Text("4-How can i close all ports only one command ? ", props.Text{
+			m.Text(langMap["p5_question_4"], props.Text{
 				Top:    95,
 				Size:   15,
 				Family: consts.Arial,
@@ -478,14 +481,14 @@ func createPDF() {
 				Style:  consts.BoldItalic,
 				Align:  consts.Left,
 			})
-			m.Text("5-How can i open a port that i closed? ", props.Text{
+			m.Text(langMap["p5_question_5"], props.Text{
 				Top:    120,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Let's we assume, we closed 22 port after that we wants to open same port again.", props.Text{
+			m.Text(langMap["p5_answer_5"], props.Text{
 				Top:    130,
 				Size:   12,
 				Family: consts.Arial,
@@ -499,44 +502,42 @@ func createPDF() {
 				Style:  consts.Normal,
 				Align:  consts.Left,
 			})
-			m.Text("6-What is iptables command ? ", props.Text{
+			m.Text(langMap["p5_question_6"], props.Text{
 				Top:    155,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Iptables is a Linux command line firewall that allows system administrators to manage incoming "+
-				"and outgoing traffic via a set of configurable table rules. Iptables uses a set of tables which have "+
-				"chains that contain set of built-in or user defined rules", props.Text{
+			m.Text(langMap["p5_answer_6"], props.Text{
 				Top:    165,
 				Size:   12,
 				Family: consts.Arial,
 				Style:  consts.Normal,
 				Align:  consts.Left,
 			})
-			m.Text("6-What is extract path in this document? ", props.Text{
+			m.Text(langMap["p5_question_7"], props.Text{
 				Top:    180,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Extract path is represent your document where will save. ", props.Text{
+			m.Text(langMap["p5_answer_7"], props.Text{
 				Top:    190,
 				Size:   12,
 				Family: consts.Arial,
 				Style:  consts.Normal,
 				Align:  consts.Left,
 			})
-			m.Text("7-What is the language? ", props.Text{
+			m.Text(langMap["p5_question_8"], props.Text{
 				Top:    200,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Language is represent main language of this document. You can change before create this document. ", props.Text{
+			m.Text(langMap["p5_answer_8"], props.Text{
 				Top:    210,
 				Size:   12,
 				Family: consts.Arial,
@@ -544,14 +545,14 @@ func createPDF() {
 				Align:  consts.Left,
 			})
 
-			m.Text("8-What is the language? ", props.Text{
+			m.Text(langMap["p5_question_9"], props.Text{
 				Top:    220,
 				Size:   15,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("Language is represent main language of this document. You can change before create this document. ", props.Text{
+			m.Text(langMap["p5_answer_9"], props.Text{
 				Top:    230,
 				Size:   12,
 				Family: consts.Arial,
@@ -561,24 +562,23 @@ func createPDF() {
 		})
 	})
 	m.AddPage()
-	commandHeaders := []string{"Command", "Explain"}
+	commandHeaders := []string{langMap["p5_answer_10_command"], langMap["p5_answer_10_explain"]}
 	commandContents := [][]string{
-		{"-I", "Append this rule to a rule chain. Valid chains for what we're doing are INPUT, FORWARD and OUTPUT, but " +
-			"we mostly deal with INPUT in this tutorial, which affects only incoming traffic. "},
-		{"OUTPUT", "Represent incoming traffic."},
-		{"-p", "The connection protocol used."},
-		{"tcp", "Represent Transmission Control Protocol"},
-		{"--dport", "The destination port(s) required for this rule. A single port may be given, or a range may be given as start:end, which will match all ports from start to end, inclusive."},
-		{"{YOUR-PORT-NUMBER} ", " Which port do you want to block ?"},
-		{"-j", "Jump to the specified target. By default, iptables allows four targets:ACCEPT,REJECT,DROP,LOG"},
-		{"ACCEPT", "Accept the packet and stop processing rules in this chain."},
-		{"REJECT", "Reject the packet and notify the sender that we did so, and stop processing rules in this chain."},
-		{"DROP", " Silently ignore the packet, and stop processing rules in this chain."},
-		{"LOG", "Log the packet, and continue processing more rules in this chain. Allows the use of the --log-prefix and --log-level options."},
+		{"-I", langMap["p5_answer_10_1"]},
+		{"OUTPUT", langMap["p5_answer_10_2"]},
+		{"-p", langMap["p5_answer_10_3"]},
+		{"tcp", langMap["p5_answer_10_4"]},
+		{"--dport", langMap["p5_answer_10_5"]},
+		{"{YOUR-PORT-NUMBER} ", langMap["p5_answer_10_6"]},
+		{"-j", langMap["p5_answer_10_7"]},
+		{"ACCEPT", langMap["p5_answer_10_8"]},
+		{"REJECT", langMap["p5_answer_10_9"]},
+		{"DROP", langMap["p5_answer_10_10"]},
+		{"LOG", langMap["p5_answer_10_11"]},
 	}
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text("9-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ", props.Text{
+			m.Text(langMap["p5_question_11"], props.Text{
 				Size:   13,
 				Family: consts.Arial,
 				Style:  consts.Bold,
@@ -608,21 +608,21 @@ func createPDF() {
 		HeaderContentSpace: 5.0,
 		Line:               true,
 	})
-	iptableHeaders := []string{"Command", "Explain"}
+	iptableHeaders := []string{langMap["p5_answer_10_command"], langMap["p5_answer_10_explain"]}
 	iptableContent := [][]string{
-		{"-L", "List of current rules in iptables."},
-		{"-nv", "Filter only invalid rules."},
+		{"-L", langMap["p5_answer_11_1"]},
+		{"-nv", langMap["p5_answer_11_2"]},
 	}
 	m.Row(30, func() {
 		m.Col(12, func() {
-			m.Text("9-What is ' sudo iptables -L -nv' ? ", props.Text{
+			m.Text(langMap["p5_question_11"], props.Text{
 				Top:    5,
 				Size:   13,
 				Family: consts.Arial,
 				Style:  consts.Bold,
 				Align:  consts.Left,
 			})
-			m.Text("This command list of all rules in iptables.", props.Text{
+			m.Text(langMap["p5_answer_11"], props.Text{
 				Top:    15,
 				Size:   13,
 				Family: consts.Arial,
@@ -658,7 +658,7 @@ func createPDF() {
 	m.AddPage()
 	m.Row(20, func() {
 		m.Col(12, func() {
-			m.Text("Most Common Ports and Services", props.Text{
+			m.Text(langMap["p6_title"], props.Text{
 				Align: consts.Center,
 				Style: consts.Bold,
 				Size:  20,
@@ -718,7 +718,7 @@ func createPDF() {
 
 func jsonConsume(mm map[string]string) map[string]string {
 	var result map[string]interface{}
-	file, _ := ioutil.ReadFile("language/tr.json")
+	file, _ := ioutil.ReadFile("language/en.json")
 	json.Unmarshal([]byte(file), &result)
 	for k, v := range result {
 		mm[k] = fmt.Sprint(v)

@@ -14,7 +14,7 @@
   "p3_created_date": "Created Date ",
 
   "p4_status": "Status",
-  "p4_port_detect": "We are detecting 11 ports and 3 port came from unknown, if you are considering these ports not expected, please forbid these ports. ",
+  "p4_port_detect": "We are detecting %d ports and %d port came from unknown, if you are considering these ports not expected, please forbid these ports. ",
   "p4_question_1": "Why should you close unused ports?",
   "p4_answer_1": "Open ports on a server are a security vulnerability that can potentially allow a hacker to exploit services on your network. If those services are unpatched, a hacker can easily take advantage of the system by\nrunning a simple port scan using free software like nmap to discover the open ports. It’s important that\nyou understand some basics about port security and how to manage ports with the principal of least privilege. ",
 
@@ -33,7 +33,7 @@
 
   "p5_title": "Frequently Asked Questions",
   "p5_question_1": "1-Why I should close open ports?",
-  "p5_question_1": "Open ports can accept outside request to your machine and represent vulnerability of your information. We are recommended to close outside request for protect itself. ",
+  "p5_answer_1": "Open ports can accept outside request to your machine and represent vulnerability of your information. We are recommended to close outside request for protect itself. ",
 
 
   "p5_question_2": "2-Why should some ports be open?",
@@ -55,34 +55,33 @@
   "p5_answer_7": "Extract path is represent your document where will save. ",
 
   "p5_question_8": "8-What is the language? ",
-  "p5_answer_8": "Dil, raporun orjinal dilini temsil etmektedir.",
+  "p5_answer_8": "Language is represent main language of this document. You can change before create this document. ",
 
-  "p5_question_9": "9-Dil ayarı nedir ?",
-  "p5_answer_9": "Dil, raporun orjinal dilini temsil etmektedir.",
+  "p5_question_9": "8-What is the language? ",
+  "p5_answer_9": "Language is represent main language of this document. You can change before create this document. ",
 
-  "p5_question_10": "'sudo iptables -A OUTPUT -p tcp --dport {PORT-NUMARAN} -j DROP' komut nedir ?",
-  "p5_answer_10_command": "Komut",
-  "p5_answer_10_explain": "Açıklama",
+  "p5_question_10": "9-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ",
+  "p5_answer_10_command": "Command",
+  "p5_answer_10_explain": "Explain",
 
-  "p5_answer_10_1": "Bu flag, kural zincirine yeni bir kural eklenmesini sağlar. INPUT,FORWARD ve OUTPUT değerlerini kabul eder. Burada gelen trafiği engellediğimiz için INPUT değerini kullanacağız.",
-  "p5_answer_10_2": "Gelen trafiği temsil edir.",
-  "p5_answer_10_3": "Hangi bağlantı protokolünü kullandığını temsil eder.",
-  "p5_answer_10_4": "Transmission Control Protokolünü(TCP) temsil eder.",
-  "p5_answer_10_5": "Hedef bağlantı için gereklidir. Tekil bir port ya da belli aralıktaki portları belirtmek için kullanılır. ",
-  "p5_answer_10_6": "Engellemek istediğiniz portu belirtir.",
-  "p5_answer_10_7": "Spesifik bir hedefi belirtmek için kullanılır. 4 hedeften biri kullanılabilir : ACCEPT,REJECT,DROP,LOG",
-  "p5_answer_10_8": "Gelen isteği kabul eder ve işleme alır. ",
-  "p5_answer_10_9": "Gelen isteği red eder ve bunu bildirmez. İşlemi sonlandırır. ",
-  "p5_answer_10_10": "Gelen isteği görmezden gelir ve bunu bildirir. İşlemi sonlandırır. ",
-  "p5_answer_10_11": "Gelen isteğin log kaydını oluşturur. İşleme devam eder. ",
+  "p5_answer_10_1": "Append this rule to a rule chain. Valid chains for what we're doing are INPUT, FORWARD and OUTPUT, but we mostly deal with INPUT in this tutorial, which affects only incoming traffic.",
+  "p5_answer_10_2": "Represent incoming traffic.",
+  "p5_answer_10_3": "The connection protocol used.",
+  "p5_answer_10_4": "Represent Transmission Control Protocol",
+  "p5_answer_10_5": "The destination port(s) required for this rule. A single port may be given, or a range may be given as start:end, which will match all ports from start to end, inclusive.",
+  "p5_answer_10_6": "Which port do you want to block ?",
+  "p5_answer_10_7": "Jump to the specified target. By default, iptables allows four targets:ACCEPT,REJECT,DROP,LOG",
+  "p5_answer_10_8": "Accept the packet and stop processing rules in this chain. ",
+  "p5_answer_10_9": "Reject the packet and notify the sender that we did so, and stop processing rules in this chain.  ",
+  "p5_answer_10_10": "Silently ignore the packet, and stop processing rules in this chain. ",
+  "p5_answer_10_11": "Log the packet, and continue processing more rules in this chain. Allows the use of the --log-prefix and --log-level options.",
 
-  "p5_question_11": "'sudo iptables -L nv' komutu nedir?",
-  "p5_answer_11": "İptables'da mevcut tüm komutların listelenmesini sağlar.",
+  "p5_question_11": "'9-What is ' sudo iptables -L -nv' ?",
+  "p5_answer_11": "This command list of all rules in iptables.",
 
-  "p5_answer_11_1": "Mevcut tablodaki tüm kuralları getirir.",
-  "p5_answer_11_2": "Sadece invalid olanları getirir.",
+  "p5_answer_11_1": "List of current rules in iptables.",
+  "p5_answer_11_2": "Filter only invalid rules.",
 
-  "p6_title": "Sık Kullanılan Port Servisleri",
-  "p6_answer_112": ""
+  "p6_title": "Most Common Ports and Services"
 
 }

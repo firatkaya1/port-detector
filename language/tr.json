@@ -1,22 +1,22 @@
 {
   "p1_motto": "Portlarinizi kolayca tarayin",
-  "p1_creator": "Fırat Kaya tarafından oluşturuldu.",
+  "p1_creator": "Firat Kaya tarafından olusturuldu.",
 
   "p2_source_codes": "Kaynak Kodlar",
 
   "p3_version": "Versiyon",
-  "p3_os_info": "Isletim sisteminizin %s olduğunu keşfettik. Bu sayfadan sonraki ayarlamalar kişisel bilgisayarınız özelliklerini göz önüne alınarak ayarlanmıştır.",
-  "p3_os_sub_info:":"Başlamadan önce, lütfen projenin daha düzgün çalışabilmesi için bağımlılıkları kontrol ediniz. Eğer bu bağımlılıklara sahip değilseniz orjinal döküman adresinden(github.com/firatkaya1) okuyabilir ve bağımlılıkları nasıl indirebileceğinizi görebilirsiniz. ",
-  "p3_deb_info": "Ubuntu işletim sisteminde iptables komutu kullanılmaktadır. Bağımlılığı kontrol edin.",
+  "p3_os_info": "Isletim sisteminizin %s olduğunu kesfettik. Bu sayfadan sonraki ayarlamalar kisisel bilgisayarınız özelliklerini göz önüne alınarak ayarlanmıstır.",
+  "p3_os_sub_info:":"Baslamadan önce, lütfen projenin daha düzgün çalısabilmesi için bağımlılıkları kontrol ediniz. Eğer bu bağımlılıklara sahip değilseniz orjinal döküman adresinden(github.com/firatkaya1) okuyabilir ve bağımlılıkları nasıl indirebileceğinizi görebilirsiniz. ",
+  "p3_deb_info": "Ubuntu isletim sisteminde iptables komutu kullanılmaktadır. Bağımlılığı kontrol edin.",
   "p3_settings": "Ayarlar",
   "p3_path": "Dosyanın Çıkarıldığı Adres",
   "p3_lang": "Dil",
-  "p3_created_date": "Oluşturulma Tarihi",
+  "p3_created_date": "Olusturulma Tarihi",
 
   "p4_status": "Durum",
-  "p4_port_detect": "Toplam %s port keşfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düşünüyorsanız, lütfen dışarıdan gelen istekleri bu portlar için kapatnızı.",
+  "p4_port_detect": "Toplam %s port kesfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düsünüyorsanız, lütfen dısarıdan gelen istekleri bu portlar için kapatnızı.",
   "p4_question_1": "Neden kullanılmayan portları kapatmalıyım ?",
-  "p4_answer_1": "Açık portlar, tehlikeli bilgisayar korsanlarına karşı güvenlik zaafiyeti oluşturmaktadır. Sizleri açık bir şekilde savunmasız bırakmaktadır. Eğer ki bu portlar güvenli hale getirilmez ise basit bir şekilde işletim sisteminiz hakkında bilgi toplayabilir ve nmap gibi 3.sınıf bir tool ile servislerinize zarar verebilir. Port güvenliğini anlamak ve uygulamak sizler için önemli bir ihtiyaçtır. ",
+  "p4_answer_1": "Açık portlar, tehlikeli bilgisayar korsanlarına karsı güvenlik zaafiyeti olusturmaktadır. Sizleri açık bir sekilde savunmasız bırakmaktadır. Eğer ki bu portlar güvenli hale getirilmez ise basit bir sekilde isletim sisteminiz hakkında bilgi toplayabilir ve nmap gibi 3.sınıf bir tool ile servislerinize zarar verebilir. Port güvenliğini anlamak ve uygulamak sizler için önemli bir ihtiyaçtır. ",
 
   "p4_question_2": "Bir port'u nasıl engellerim ?",
   "p4_answer_2": "Linux(%d) dünyasında sizlere bazı komutlar önermekte ve bunları nasıl kullanabileceğinizi göstereceğiz.",
@@ -28,19 +28,19 @@
   "p4_step_2_info": "Bilinmeyen kaynaklardan gelen istekleri reddedin.",
 
   "p4_step_3": "Adım 3",
-  "p4_step_3_info": "Portların düzgün bir şekilde kapatılıp kapatılmadığını kontrol edin.",
+  "p4_step_3_info": "Portların düzgün bir sekilde kapatılıp kapatılmadığını kontrol edin.",
 
 
   "p5_title": "Sıkça Sorulan Sorular",
-  "p5_question_1": "1-Neden açık portları kapatmalıyım ?",
-  "p5_question_1": "Açık portlar dışarıdan gelen istekleri kabul etmekte ve bir güvenlik açığı oluşturmaktadırlar.  Kişisel güvenliğiniz için açık portların kapatılmasını şiddetle tavsiye etmekteyiz.",
+  "p5_question_1": "1-Neden açik portları kapatmaliyim ?",
+  "p5_question_1": "Açik portlar disaridan gelen istekleri kabul etmekte ve bir güvenlik açığı olusturmaktadırlar.  Kisisel güvenliğiniz için açık portların kapatılmasını siddetle tavsiye etmekteyiz.",
 
 
   "p5_question_2": "2-Neden bazı portların açık kalması gerekmektedir ?",
-  "p5_answer_2": "Tüm portları kontrol etmek istesek bile, dış dünya ile iletişim kurabilmemiz adına bazı portların açık kalması gerekmektedir. Örnek olarak, 80 portu HTTP isteklerinin gerçekleştiği bir porttur. 22. port'u ise uzak bağlantı için kullanırız.  Bu portların kapatılması tavsiye edilmez.",
+  "p5_answer_2": "Tüm portları kontrol etmek istesek bile, dıs dünya ile iletisim kurabilmemiz adına bazı portların açık kalması gerekmektedir. Örnek olarak, 80 portu HTTP isteklerinin gerçeklestiği bir porttur. 22. port'u ise uzak bağlantı için kullanırız.  Bu portların kapatılması tavsiye edilmez.",
 
   "p5_question_3": "3-Tüm portları kapatırsam ne olur ?",
-  "p5_answer_3": "3-Kesinlike kötü bir fikir. Eğer tüm portları kapattığınız yer bir sunucu ise var olan tüm bağlantılarınız kopacaktır. Tüm iletişim yollarınız kesilir.",
+  "p5_answer_3": "3-Kesinlike kötü bir fikir. Eğer tüm portları kapattığınız yer bir sunucu ise var olan tüm bağlantılarınız kopacaktır. Tüm iletisim yollarınız kesilir.",
 
   "p5_question_4": "4-Tüm portları nasıl kapatabilirim ?",
   "p5_answer_4": "iptables -A INPUT -p tcp -m tcp -m multiport ! --dports 80,443 -j DROP",
@@ -49,7 +49,7 @@
   "p5_answer_5": "22.portu kapattığınızı ve tekrardan açmak istediğinizi farz edelim.",
 
   "p5_question_6": "6-iptables komutu nedir?",
-  "p5_answer_6": "Iptables, linux tabanlı bir güvenli duvarı ayarlama komutudur. Sistem yönetimi ve gelen-giden isteklerin yönetilmesini kolaylaştırır. Iptables bir konfigürasyon zincirinden oluşur ve kullanıcının tanımlamalarından meydana gelir.",
+  "p5_answer_6": "Iptables, linux tabanlı bir güvenli duvarı ayarlama komutudur. Sistem yönetimi ve gelen-giden isteklerin yönetilmesini kolaylastırır. Iptables bir konfigürasyon zincirinden olusur ve kullanıcının tanımlamalarından meydana gelir.",
 
   "p5_question_7": "7-Dosya yol uzantısı nedir?",
   "p5_answer_7": "Dosya yol'u sizin, raporu nereye kayıt etmek istediğinizi belirleyen yoldur.",
@@ -71,10 +71,10 @@
   "p5_answer_10_5": "Hedef bağlantı için gereklidir. Tekil bir port ya da belli aralıktaki portları belirtmek için kullanılır. ",
   "p5_answer_10_6": "Engellemek istediğiniz portu belirtir.",
   "p5_answer_10_7": "Spesifik bir hedefi belirtmek için kullanılır. 4 hedeften biri kullanılabilir : ACCEPT,REJECT,DROP,LOG",
-  "p5_answer_10_8": "Gelen isteği kabul eder ve işleme alır. ",
-  "p5_answer_10_9": "Gelen isteği red eder ve bunu bildirmez. İşlemi sonlandırır. ",
-  "p5_answer_10_10": "Gelen isteği görmezden gelir ve bunu bildirir. İşlemi sonlandırır. ",
-  "p5_answer_10_11": "Gelen isteğin log kaydını oluşturur. İşleme devam eder. ",
+  "p5_answer_10_8": "Gelen isteği kabul eder ve isleme alır. ",
+  "p5_answer_10_9": "Gelen isteği red eder ve bunu bildirmez. İslemi sonlandırır. ",
+  "p5_answer_10_10": "Gelen isteği görmezden gelir ve bunu bildirir. İslemi sonlandırır. ",
+  "p5_answer_10_11": "Gelen isteğin log kaydını olusturur. İsleme devam eder. ",
 
   "p5_question_11": "'sudo iptables -L nv' komutu nedir?",
   "p5_answer_11": "İptables'da mevcut tüm komutların listelenmesini sağlar.",
