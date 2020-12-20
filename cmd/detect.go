@@ -11,6 +11,7 @@ import (
 	"net"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -29,12 +30,13 @@ report them easily. Start to using, just enter the detect command and watch the 
 }
 var language string
 var path string
+var fileName string
 
 func init() {
 	rootCmd.AddCommand(detectCmd)
-	detectCmd.PersistentFlags().StringVarP(&language, "lang", "l", "en", "required")
+	detectCmd.PersistentFlags().StringVarP(&language, "language", "l", "en", "required")
 	detectCmd.PersistentFlags().StringVarP(&path, "path", "p", "/", "required")
-	detectCmd.PersistentFlags().StringVarP(&path, "name", "n", "/", "required")
+	detectCmd.PersistentFlags().StringVarP(&fileName, "name", "n", "port-detector", "required")
 
 	detectCmd.MarkFlagRequired("lang")
 	detectCmd.MarkFlagRequired("path")
@@ -43,8 +45,6 @@ func init() {
 }
 
 func scanPorts() {
-	fmt.Println("lang :", language)
-	fmt.Println("path :", path)
 	for i := 0; i < 65532; i++ {
 		timeout := time.Second
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)), timeout)
@@ -52,7 +52,7 @@ func scanPorts() {
 		}
 		if conn != nil {
 			defer conn.Close()
-			fmt.Println("Open Port Detect ", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)))
+			fmt.Println("Port Detect :", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)))
 		}
 	}
 	createPDF()
@@ -70,7 +70,7 @@ func createPDF() {
 	m.SetBorder(false)
 	m.Row(60, func() {
 		m.Col(12, func() {
-			m.FileImage("/home/kaya/go/src/port-detector/assets/port.png", props.Rect{
+			m.FileImage("assets/port.png", props.Rect{
 				Percent: 100,
 				Center:  true,
 			})
@@ -138,7 +138,7 @@ func createPDF() {
 	m.AddPage()
 	m.Row(50, func() {
 		m.Col(12, func() {
-			m.FileImage("/home/kaya/go/src/port-detector/assets/ubuntu.png", props.Rect{
+			m.FileImage("assets/ubuntu.png", props.Rect{
 				Percent: 100,
 				Center:  true,
 			})
@@ -706,22 +706,47 @@ func createPDF() {
 		Line:               true,
 	})
 
-	err := m.OutputFileAndClose("/home/kaya/Music/test.pdf")
+	err := m.OutputFileAndClose(path + fileName)
 	if err != nil {
 		fmt.Println("Could not save PDF:", err)
 		os.Exit(1)
 	}
 
 	end := time.Now()
-	fmt.Println(end.Sub(begin))
+	printTerminal(end, begin)
 }
 
 func jsonConsume(mm map[string]string) map[string]string {
 	var result map[string]interface{}
-	file, _ := ioutil.ReadFile("language/en.json")
+	file, _ := ioutil.ReadFile("language/" + getLanguage() + ".json")
 	json.Unmarshal([]byte(file), &result)
 	for k, v := range result {
 		mm[k] = fmt.Sprint(v)
 	}
 	return mm
+}
+
+func printTerminal(end, begin time.Time) {
+	if language == "en" {
+		fmt.Println("Language : English")
+		fmt.Println("Extract Path : " + path)
+		fmt.Println("File Name : " + fileName)
+
+		fmt.Println("Created report time : ", end.Sub(begin))
+
+	} else {
+		fmt.Println("Dil : Turkish")
+		fmt.Println("Dosya'nın çıkarıldığı yer : " + path)
+		fmt.Println("Dosya Adı : " + fileName)
+		fmt.Println("Rapor oluşturma süresi : ", end.Sub(begin))
+	}
+
+}
+
+func getLanguage() string {
+	if strings.Contains(language, "en") {
+		return "en"
+	} else {
+		return "tr"
+	}
 }
