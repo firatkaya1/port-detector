@@ -7,14 +7,14 @@ import (
 	"github.com/johnfercher/maroto/pkg/consts"
 	"github.com/johnfercher/maroto/pkg/pdf"
 	"github.com/johnfercher/maroto/pkg/props"
+	"github.com/matishsiao/goInfo"
+	"github.com/spf13/cobra"
 	"io/ioutil"
 	"net"
 	"os"
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/spf13/cobra"
 )
 
 // detectCmd represents the detect command
@@ -64,6 +64,8 @@ var langMap = make(map[string]string)
 
 func createPDF() {
 	langMap = jsonConsume(langMap)
+
+	osInfos := getOperationSystem()
 
 	begin := time.Now()
 	m := pdf.NewMaroto(consts.Portrait, consts.Letter)
@@ -146,7 +148,7 @@ func createPDF() {
 	})
 	m.Row(30, func() {
 		m.Col(12, func() {
-			m.Text("Ubuntu", props.Text{
+			m.Text(osInfos.OS, props.Text{
 				Top:         10,
 				Size:        30,
 				Extrapolate: false,
@@ -168,7 +170,7 @@ func createPDF() {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text(fmt.Sprintf(langMap["p3_os_info"], "{os adı}"), props.Text{
+			m.Text(fmt.Sprintf(langMap["p3_os_info"], osInfos.OS, string(osInfos.CPUs)), props.Text{
 				Top:         10,
 				Size:        12,
 				Extrapolate: false,
@@ -186,7 +188,7 @@ func createPDF() {
 				Style:       consts.Normal,
 				Align:       consts.Left,
 			})
-			m.Text(dot+langMap["p3_deb_info"], props.Text{
+			m.Text(fmt.Sprintf(dot+langMap["p3_deb_info"], osInfos.GoOS), props.Text{
 				Top:         40,
 				Size:        12,
 				Extrapolate: false,
@@ -751,10 +753,15 @@ func getLanguage() string {
 		return "tr"
 	}
 }
+
 func getPath() string {
 	if path[len(path)-1:] == "/" {
 		return path + fileName
 	} else {
 		return path + "/" + fileName + ".pdf"
 	}
+}
+
+func getOperationSystem() *goInfo.GoInfoObject {
+	return goInfo.GetInfo().VarDump()
 }

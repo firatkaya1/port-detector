@@ -5,9 +5,9 @@
   "p2_source_codes": "Source Codes",
 
   "p3_version": "Version",
-  "p3_os_info": "We are detect to your operation system is Ubuntu 19.10. Under the these page all suggestions re-write for you personal computer. Feel free.",
-  "p3_os_sub_info:":"Please before the start check out dependencies for firewall settings. If you do not have these dependencies, open the original documentation(github.com/firatkaya1) and install to your operation system.",
-  "p3_deb_info": "We are using iptables command on ubuntu.",
+  "p3_os_info": "We are detect to your operation system is %s %s . Under the these page all suggestions re-write for you personal computer. Feel free.",
+  "p3_os_sub_info":"Please before the start check out dependencies for firewall settings. If you do not have these dependencies, open the original documentation(github.com/firatkaya1) and install to your operation system.",
+  "p3_deb_info": "We are using iptables command on %s.",
   "p3_settings": "Settings",
   "p3_path": "Extract Path ",
   "p3_lang": "Language",
