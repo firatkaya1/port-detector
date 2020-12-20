@@ -706,7 +706,7 @@ func createPDF() {
 		Line:               true,
 	})
 
-	err := m.OutputFileAndClose(path + fileName)
+	err := m.OutputFileAndClose(getPath())
 	if err != nil {
 		fmt.Println("Could not save PDF:", err)
 		os.Exit(1)
@@ -731,13 +731,14 @@ func printTerminal(end, begin time.Time) {
 		fmt.Println("Language : English")
 		fmt.Println("Extract Path : " + path)
 		fmt.Println("File Name : " + fileName)
-
+		fmt.Println("Exact path : " + getPath())
 		fmt.Println("Created report time : ", end.Sub(begin))
 
 	} else {
 		fmt.Println("Dil : Turkish")
 		fmt.Println("Dosya'nın çıkarıldığı yer : " + path)
 		fmt.Println("Dosya Adı : " + fileName)
+		fmt.Println("Tam adresi : " + getPath())
 		fmt.Println("Rapor oluşturma süresi : ", end.Sub(begin))
 	}
 
@@ -748,5 +749,12 @@ func getLanguage() string {
 		return "en"
 	} else {
 		return "tr"
+	}
+}
+func getPath() string {
+	if path[len(path)-1:] == "/" {
+		return path + fileName
+	} else {
+		return path + "/" + fileName + ".pdf"
 	}
 }
