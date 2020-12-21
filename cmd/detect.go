@@ -45,6 +45,7 @@ func init() {
 }
 
 func scanPorts() {
+	var ports []string
 	for i := 0; i < 65532; i++ {
 		timeout := time.Second
 		conn, err := net.DialTimeout("tcp", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)), timeout)
@@ -53,16 +54,18 @@ func scanPorts() {
 		if conn != nil {
 			defer conn.Close()
 			fmt.Println("Port Detect :", net.JoinHostPort("0.0.0.0", strconv.Itoa(i)))
+
+			ports = append(ports, net.JoinHostPort("0.0.0.0", strconv.Itoa(i))[8:])
 		}
 	}
-	createPDF()
+	createPDF(ports)
 }
 
 const dot = "\xE2\x80\xA2"
 
 var langMap = make(map[string]string)
 
-func createPDF() {
+func createPDF(ports []string) {
 	langMap = jsonConsume(langMap)
 
 	osInfos := getOperationSystem()
@@ -140,7 +143,7 @@ func createPDF() {
 	m.AddPage()
 	m.Row(50, func() {
 		m.Col(12, func() {
-			m.FileImage("assets/ubuntu.png", props.Rect{
+			m.FileImage(getOsLogo(osInfos.GoOS), props.Rect{
 				Percent: 100,
 				Center:  true,
 			})
@@ -231,7 +234,7 @@ func createPDF() {
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("English", props.Text{
+			m.Text(getLanguageFormat(), props.Text{
 				Top:         98,
 				Size:        12,
 				Extrapolate: false,
@@ -245,7 +248,7 @@ func createPDF() {
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("2020/11/12 23:45:32 ", props.Text{
+			m.Text(time.Now().Format("2006/01/02 15:04:05"), props.Text{
 				Top:         116,
 				Size:        12,
 				Extrapolate: false,
@@ -258,15 +261,11 @@ func createPDF() {
 	//Add the open ports
 	m.AddPage()
 	headers := []string{"#", "Host", "Port", langMap["p4_status"], "?"}
-	contents := [][]string{
-		{"1", "0.0.0.0", "3306", "Listening", "MYSQL"},
-		{"2", "0.0.0.0", "8080", "Listening", "Apache Tomcat"},
-		{"3", "0.0.0.0", "443", "Listening", "Apache Server"},
-		{"4", "0.0.0.0", "69", "Listening", "Java"},
-		{"5", "0.0.0.0", "56", "Listening", "Java"},
-		{"6", "0.0.0.0", "4453", "Listening", "MYSQL"},
-		{"7", "0.0.0.0", "22", "Listening", "Dovecot"},
+	var contents = make([][]string, 1, len(ports))
+	for i := range ports {
+		contents = append(contents, []string{strconv.Itoa(i + 1), "0.0.0.0", ports[i], "Listening", getPortService(ports[i])})
 	}
+
 	m.TableList(headers, contents, props.TableList{
 		HeaderProp: props.TableListContent{
 			Family:    consts.Arial,
@@ -730,14 +729,14 @@ func jsonConsume(mm map[string]string) map[string]string {
 
 func printTerminal(end, begin time.Time) {
 	if language == "en" {
-		fmt.Println("Language : English")
+		fmt.Println("Language :", getLanguageFormat())
 		fmt.Println("Extract Path : " + path)
 		fmt.Println("File Name : " + fileName)
 		fmt.Println("Exact path : " + getPath())
 		fmt.Println("Created report time : ", end.Sub(begin))
 
 	} else {
-		fmt.Println("Dil : Turkish")
+		fmt.Println("Dil :", getLanguageFormat())
 		fmt.Println("Dosya'nın çıkarıldığı yer : " + path)
 		fmt.Println("Dosya Adı : " + fileName)
 		fmt.Println("Tam adresi : " + getPath())
@@ -764,4 +763,49 @@ func getPath() string {
 
 func getOperationSystem() *goInfo.GoInfoObject {
 	return goInfo.GetInfo().VarDump()
+}
+func getOsLogo(osName string) string {
+	switch osName {
+	case "windows":
+		return "assets/microsoft.png"
+	case "darwin":
+		return "assets/macos.png"
+	default:
+		return "assets/ubuntu.png"
+	}
+}
+
+var portServiceMap = map[string]string{
+	"20":   "FTP",
+	"21":   "FTP",
+	"22":   "SSH",
+	"23":   "TELNET",
+	"25":   "SMTP",
+	"53":   "DNS",
+	"80":   "HTTP",
+	"110":  "POP3",
+	"119":  "NNTP",
+	"123":  "NTP",
+	"143":  "IMAP",
+	"443":  "HTTPS",
+	"465":  "SMTPS",
+	"631":  "IPP",
+	"3306": "mySQL",
+	"5432": "postgres",
+	"5939": "TCP",
+	"8080": "Apache Tomcat",
+}
+
+func getPortService(portService string) string {
+	if _, ok := portServiceMap[portService]; ok {
+		return portServiceMap[portService]
+	}
+	return "UNKNOWN"
+}
+func getLanguageFormat() string {
+	if strings.Contains(language, "en") {
+		return "English"
+	} else {
+		return "Turkish"
+	}
 }

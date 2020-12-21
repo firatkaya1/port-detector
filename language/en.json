@@ -1,6 +1,6 @@
 {
   "p1_motto": "Detect ports easily",
-  "p1_creator": "Created By Fırat Kaya",
+  "p1_creator": "Created By F.K",
 
   "p2_source_codes": "Source Codes",
 
@@ -30,14 +30,12 @@
   "p4_step_3": "Step 3",
   "p4_step_3_info": "Check the ports, are they closed from outside request?",
 
-
   "p5_title": "Frequently Asked Questions",
   "p5_question_1": "1-Why I should close open ports?",
   "p5_answer_1": "Open ports can accept outside request to your machine and represent vulnerability of your information. We are recommended to close outside request for protect itself. ",
 
-
   "p5_question_2": "2-Why should some ports be open?",
-  "p5_answer_2": "Even we want to control all the ports, we have to continue our communication between machine and world. For example, we do not want to close 80 port because this port working with HTTP and connect\ntoother machine.Another example is 22 port. This port helps to us connect our machine via SSH. ",
+  "p5_answer_2": "Even we want to control all the ports, we have to continue our communication between machine and world. For example, we do not want to close 80 port because this port working with HTTP and connect to other machine. Another example is 22 port. This port helps to us connect our machine via SSH. ",
 
   "p5_question_3": "3-What happen if i close all ports?",
   "p5_answer_3": "Definitely worst idea. You can not contact your machine if machine is a server. All communication will lose. ",
@@ -57,8 +55,8 @@
   "p5_question_8": "8-What is the language? ",
   "p5_answer_8": "Language is represent main language of this document. You can change before create this document. ",
 
-  "p5_question_9": "8-What is the language? ",
-  "p5_answer_9": "Language is represent main language of this document. You can change before create this document. ",
+  "p5_question_9": "8-What is the name? ",
+  "p5_answer_9": "Name is represent file name of document. You can change before create this document. ",
 
   "p5_question_10": "9-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ",
   "p5_answer_10_command": "Command",

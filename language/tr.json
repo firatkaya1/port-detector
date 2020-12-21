@@ -1,17 +1,17 @@
 {
   "p1_motto": "Portlarinizi kolayca tarayin",
-  "p1_creator": "Firat Kaya tarafından olusturuldu.",
+  "p1_creator": "F.K tarafından olusturuldu.",
 
   "p2_source_codes": "Kaynak Kodlar",
 
   "p3_version": "Versiyon",
   "p3_os_info": "Isletim sisteminizin %s olduğunu kesfettik. Bu sayfadan sonraki ayarlamalar kisisel bilgisayarınız özelliklerini göz önüne alınarak ayarlanmıstır.",
-  "p3_os_sub_info:":"Baslamadan önce, lütfen projenin daha düzgün çalısabilmesi için bağımlılıkları kontrol ediniz. Eğer bu bağımlılıklara sahip değilseniz orjinal döküman adresinden(github.com/firatkaya1) okuyabilir ve bağımlılıkları nasıl indirebileceğinizi görebilirsiniz. ",
+  "p3_os_sub_info": "Baslamadan önce, lütfen projenin daha düzgün çalısabilmesi için bağımlılıkları kontrol ediniz. Eğer bu bağımlılıklara sahip değilseniz orjinal döküman adresinden(github.com/firatkaya1) okuyabilir ve bağımlılıkları nasıl indirebileceğinizi görebilirsiniz. ",
   "p3_deb_info": "Ubuntu isletim sisteminde iptables komutu kullanılmaktadır. Bağımlılığı kontrol edin.",
   "p3_settings": "Ayarlar",
   "p3_path": "Dosyanın Çıkarıldığı Adres",
   "p3_lang": "Dil",
-  "p3_created_date": "Olusturulma Tarihi",
+  "p3_created_date": "Olusturulma Tarihi ",
 
   "p4_status": "Durum",
   "p4_port_detect": "Toplam %s port kesfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düsünüyorsanız, lütfen dısarıdan gelen istekleri bu portlar için kapatnızı.",
@@ -33,7 +33,7 @@
 
   "p5_title": "Sıkça Sorulan Sorular",
   "p5_question_1": "1-Neden açik portları kapatmaliyim ?",
-  "p5_question_1": "Açik portlar disaridan gelen istekleri kabul etmekte ve bir güvenlik açığı olusturmaktadırlar.  Kisisel güvenliğiniz için açık portların kapatılmasını siddetle tavsiye etmekteyiz.",
+  "p5_answer_1": "Açik portlar disaridan gelen istekleri kabul etmekte ve bir güvenlik açığı olusturmaktadırlar.  Kisisel güvenliğiniz için açık portların kapatılmasını siddetle tavsiye etmekteyiz.",
 
 
   "p5_question_2": "2-Neden bazı portların açık kalması gerekmektedir ?",
@@ -54,11 +54,11 @@
   "p5_question_7": "7-Dosya yol uzantısı nedir?",
   "p5_answer_7": "Dosya yol'u sizin, raporu nereye kayıt etmek istediğinizi belirleyen yoldur.",
 
-  "p5_question_8": "8-Dil ayarı nedir ?",
+  "p5_question_8": "8-Dil komutu nedir ?",
   "p5_answer_8": "Dil, raporun orjinal dilini temsil etmektedir.",
 
-  "p5_question_9": "9-Dil ayarı nedir ?",
-  "p5_answer_9": "Dil, raporun orjinal dilini temsil etmektedir.",
+  "p5_question_9": "9-Name komutu nedir ?",
+  "p5_answer_9": "Name, raporun adını temsil etmektedir.",
 
   "p5_question_10": "'sudo iptables -A OUTPUT -p tcp --dport {PORT-NUMARAN} -j DROP' komut nedir ?",
   "p5_answer_10_command": "Komut",
@@ -82,9 +82,6 @@
   "p5_answer_11_1": "Mevcut tablodaki tüm kuralları getirir.",
   "p5_answer_11_2": "Sadece invalid olanları getirir.",
 
-  "p6_title": "Sık Kullanılan Port Servisleri",
-  "p6_answer_1": "",
+  "p6_title": "Sık Kullanılan Port Servisleri"
 
-  "p5_question_1": "",
-  "p5_answer_1": ""
 }
