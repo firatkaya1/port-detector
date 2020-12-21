@@ -82,6 +82,6 @@
   "p5_answer_11_1": "Mevcut tablodaki tüm kuralları getirir.",
   "p5_answer_11_2": "Sadece invalid olanları getirir.",
 
-  "p6_title": "Sık Kullanılan Port Servisleri"
-
+  "p6_title": "Sık Kullanılan Port Servisleri",
+  "unknown": "Bilinmiyor"
 }

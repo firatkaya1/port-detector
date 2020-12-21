@@ -220,7 +220,7 @@ func createPDF(ports []string) {
 				Style:       consts.Bold,
 				Align:       consts.Left,
 			})
-			m.Text("/home/kaya/test.pdf ", props.Text{
+			m.Text(getPath(), props.Text{
 				Top:         78,
 				Size:        12,
 				Extrapolate: false,
@@ -800,7 +800,7 @@ func getPortService(portService string) string {
 	if _, ok := portServiceMap[portService]; ok {
 		return portServiceMap[portService]
 	}
-	return "UNKNOWN"
+	return langMap["unknown"]
 }
 func getLanguageFormat() string {
 	if strings.Contains(language, "en") {
