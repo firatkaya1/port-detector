@@ -31,6 +31,7 @@ report them easily. Start to using, just enter the detect command and watch the 
 var language string
 var path string
 var fileName string
+var unknownPorts int
 
 func init() {
 	rootCmd.AddCommand(detectCmd)
@@ -263,7 +264,7 @@ func createPDF(ports []string) {
 	headers := []string{"#", "Host", "Port", langMap["p4_status"], "?"}
 	var contents = make([][]string, 1, len(ports))
 	for i := range ports {
-		contents = append(contents, []string{strconv.Itoa(i + 1), "0.0.0.0", ports[i], "Listening", getPortService(ports[i])})
+		contents = append(contents, []string{strconv.Itoa(i + 1), "0.0.0.0", ports[i], langMap["listen"], getPortService(ports[i])})
 	}
 
 	m.TableList(headers, contents, props.TableList{
@@ -290,7 +291,7 @@ func createPDF(ports []string) {
 	})
 	m.Row(10, func() {
 		m.Col(12, func() {
-			m.Text(fmt.Sprintf(langMap["p4_status"], 11, 3), props.Text{
+			m.Text(fmt.Sprintf(langMap["p4_port_detect"], len(ports), unknownPorts), props.Text{
 				Top:         5,
 				Size:        12,
 				Extrapolate: false,
@@ -800,6 +801,7 @@ func getPortService(portService string) string {
 	if _, ok := portServiceMap[portService]; ok {
 		return portServiceMap[portService]
 	}
+	unknownPorts = unknownPorts + 1
 	return langMap["unknown"]
 }
 func getLanguageFormat() string {

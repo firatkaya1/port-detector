@@ -81,6 +81,7 @@
   "p5_answer_11_2": "Filter only invalid rules.",
 
   "p6_title": "Most Common Ports and Services",
-  "unknown": "UNKNOWN"
+  "unknown": "UNKNOWN",
+  "listen": "Listening"
 
 }

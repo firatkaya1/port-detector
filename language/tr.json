@@ -14,7 +14,7 @@
   "p3_created_date": "Olusturulma Tarihi ",
 
   "p4_status": "Durum",
-  "p4_port_detect": "Toplam %s port kesfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düsünüyorsanız, lütfen dısarıdan gelen istekleri bu portlar için kapatnızı.",
+  "p4_port_detect": "Toplam %d port kesfedildi. Bu portlardan %d adetin kaynağı bilinmemektedir. Eğer bunların beklemenmedik bir port olduğunu düsünüyorsanız, lütfen dısarıdan gelen istekleri bu portlar için kapatnızı.",
   "p4_question_1": "Neden kullanılmayan portları kapatmalıyım ?",
   "p4_answer_1": "Açık portlar, tehlikeli bilgisayar korsanlarına karsı güvenlik zaafiyeti olusturmaktadır. Sizleri açık bir sekilde savunmasız bırakmaktadır. Eğer ki bu portlar güvenli hale getirilmez ise basit bir sekilde isletim sisteminiz hakkında bilgi toplayabilir ve nmap gibi 3.sınıf bir tool ile servislerinize zarar verebilir. Port güvenliğini anlamak ve uygulamak sizler için önemli bir ihtiyaçtır. ",
 
@@ -83,5 +83,7 @@
   "p5_answer_11_2": "Sadece invalid olanları getirir.",
 
   "p6_title": "Sık Kullanılan Port Servisleri",
-  "unknown": "Bilinmiyor"
+  "unknown": "Bilinmiyor",
+  "listen": "Dinleniyor"
+
 }
