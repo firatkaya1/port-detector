@@ -55,10 +55,10 @@
   "p5_question_8": "8-What is the language? ",
   "p5_answer_8": "Language is represent main language of this document. You can change before create this document. ",
 
-  "p5_question_9": "8-What is the name? ",
+  "p5_question_9": "9-What is the name? ",
   "p5_answer_9": "Name is represent file name of document. You can change before create this document. ",
 
-  "p5_question_10": "9-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ",
+  "p5_question_10": "10-What is ' sudo iptables -A OUTPUT -p tcp --dport {YOUR-PORT-NUMBER} -j DROP' ? ",
   "p5_answer_10_command": "Command",
   "p5_answer_10_explain": "Explain",
 
@@ -74,7 +74,7 @@
   "p5_answer_10_10": "Silently ignore the packet, and stop processing rules in this chain. ",
   "p5_answer_10_11": "Log the packet, and continue processing more rules in this chain. Allows the use of the --log-prefix and --log-level options.",
 
-  "p5_question_11": "'10-What is ' sudo iptables -L -nv' ?",
+  "p5_question_11": "'11-What is ' sudo iptables -L -nv' ?",
   "p5_answer_11": "This command list of all rules in iptables.",
 
   "p5_answer_11_1": "List of current rules in iptables.",
