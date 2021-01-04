@@ -123,6 +123,9 @@ Build ettiğimiz dosyayı /bin klasörüne kopyalamıştık. Yapmanız gereken t
 ```
 sudo rm /bin/port-detector
 ```
+#### Örnek bir rapor çıktısı 
+Projeyi test etmek istemiyorsanız ve örnek bir çıktı görmek istiyorsanız, assets/port-detector.pdf isimli dosyayı indirip, inceleyebilirsiniz. 
+
 ---
 Bir problemle karşılaşırsanız bana yazabilirsiniz. 
 
